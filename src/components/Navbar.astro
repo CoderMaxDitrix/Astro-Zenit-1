@@ -1,0 +1,114 @@
+<nav class="fixed w-full z-50 transition-all duration-300" 
+     x-data="{ mobileMenuOpen: false, scrolled: false }"
+     @scroll.window="scrolled = window.scrollY > 20"
+     :class="scrolled ? 'bg-white dark:bg-slate-800 shadow-md py-3' : 'bg-transparent py-5 border-b border-gray-200 dark:border-slate-800'">
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+        
+       <div class="grid grid-cols-1 grid-rows-1 items-center cursor-pointer h-10 w-auto">
+    <img src="/assets/LOGO-WEB-CLARO.png" 
+         alt="Zenit Solar" 
+         class="col-start-1 row-start-1 h-10 w-auto transition-opacity duration-300 pointer-events-none"
+         :class="!darkMode ? 'opacity-100' : 'opacity-0'">
+    
+    <img src="/assets/LOGO-WEB-DARK.png" 
+         alt="Zenit Solar" 
+         class="col-start-1 row-start-1 h-10 w-auto transition-opacity duration-300 pointer-events-none"
+         :class="(darkMode && !scrolled) ? 'opacity-100' : 'opacity-0'">
+
+    <img src="/assets/LOGO-NAV-DARK.png" 
+         alt="Zenit Solar" 
+         class="col-start-1 row-start-1 h-10 w-auto transition-opacity duration-300 pointer-events-none"
+         :class="(darkMode && scrolled) ? 'opacity-100' : 'opacity-0'">
+</div>
+
+        <div class="hidden lg:flex items-center gap-7 text-[14px] font-medium text-gray-600 dark:text-gray-300">
+            <a href="#inicio" class="text-primary border-b-2 border-primary pb-1">Inicio</a>
+            <a href="#soluciones" class="hover:text-primary dark:hover:text-primary transition-colors">Soluciones</a>
+            <a href="#productos" class="hover:text-primary dark:hover:text-primary transition-colors">Productos</a>
+            <a href="#servicios" class="hover:text-primary dark:hover:text-primary transition-colors">Servicios</a>
+            <a href="#obras-testimonios" class="hover:text-primary dark:hover:text-primary transition-colors">Obras y Testimonios</a>
+            <a href="#nosotros" class="hover:text-primary dark:hover:text-primary transition-colors">Nosotros</a>
+            <a href="#faq" class="hover:text-primary dark:hover:text-primary transition-colors">FAQ</a>
+            
+            <button @click="darkMode = !darkMode" 
+                    class="grid grid-cols-1 grid-rows-1 place-items-center w-10 h-10 rounded-lg text-gray-400 hover:text-dark dark:hover:text-white hover:bg-gray-100 dark:hover:bg-slate-700/50 transition-colors focus:outline-none cursor-pointer" 
+                    title="Cambiar tema">
+                <span class="col-start-1 row-start-1 flex items-center justify-center"
+                      x-show="!darkMode"
+                      x-transition:enter="transition ease-out duration-300 transform"
+                      x-transition:enter-start="opacity-0 -rotate-90 scale-50"
+                      x-transition:enter-end="opacity-100 rotate-0 scale-100"
+                      x-transition:leave="transition ease-in duration-200 transform"
+                      x-transition:leave-start="opacity-100 rotate-0 scale-100"
+                      x-transition:leave-end="opacity-0 rotate-90 scale-50">
+                    <i data-lucide="moon" class="w-5 h-5"></i>
+                </span>
+                <span class="col-start-1 row-start-1 flex items-center justify-center"
+                      x-show="darkMode"
+                      x-cloak
+                      x-transition:enter="transition ease-out duration-300 transform"
+                      x-transition:enter-start="opacity-0 rotate-90 scale-50"
+                      x-transition:enter-end="opacity-100 rotate-0 scale-100"
+                      x-transition:leave="transition ease-in duration-200 transform"
+                      x-transition:leave-start="opacity-100 rotate-0 scale-100"
+                      x-transition:leave-end="opacity-0 -rotate-90 scale-50">
+                    <i data-lucide="sun" class="w-5 h-5 text-amber-400"></i>
+                </span>
+            </button>
+
+            <a href="#contacto" class="bg-primary text-white px-5 py-2.5 rounded-lg hover:bg-primaryHover transition-colors shadow-sm">
+                Solicitar cotización
+            </a>
+        </div>
+
+        <div class="flex items-center gap-2 lg:hidden">
+            <button @click="darkMode = !darkMode" 
+                    class="grid grid-cols-1 grid-rows-1 place-items-center w-10 h-10 rounded-lg text-gray-400 hover:text-dark dark:hover:text-white focus:outline-none cursor-pointer" 
+                    title="Cambiar tema">
+                <span class="col-start-1 row-start-1 flex items-center justify-center"
+                      x-show="!darkMode"
+                      x-transition:enter="transition ease-out duration-300 transform"
+                      x-transition:enter-start="opacity-0 -rotate-90 scale-50"
+                      x-transition:enter-end="opacity-100 rotate-0 scale-100"
+                      x-transition:leave="transition ease-in duration-200 transform"
+                      x-transition:leave-start="opacity-100 rotate-0 scale-100"
+                      x-transition:leave-end="opacity-0 rotate-90 scale-50">
+                    <i data-lucide="moon" class="w-5 h-5"></i>
+                </span>
+                <span class="col-start-1 row-start-1 flex items-center justify-center"
+                      x-show="darkMode"
+                      x-cloak
+                      x-transition:enter="transition ease-out duration-300 transform"
+                      x-transition:enter-start="opacity-0 rotate-90 scale-50"
+                      x-transition:enter-end="opacity-100 rotate-0 scale-100"
+                      x-transition:leave="transition ease-in duration-200 transform"
+                      x-transition:leave-start="opacity-100 rotate-0 scale-100"
+                      x-transition:leave-end="opacity-0 -rotate-90 scale-50">
+                    <i data-lucide="sun" class="w-5 h-5 text-amber-400"></i>
+                </span>
+            </button>
+            
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-dark dark:text-white p-2 cursor-pointer">
+                <i data-lucide="menu" class="w-6 h-6" x-show="!mobileMenuOpen"></i>
+                <i data-lucide="x" class="w-6 h-6" x-show="mobileMenuOpen" x-cloak></i>
+            </button>
+        </div>
+    </div>
+
+    <div x-show="mobileMenuOpen" x-collapse x-cloak class="lg:hidden bg-white dark:bg-slate-800 border-t border-gray-100 dark:border-slate-700 shadow-xl absolute w-full transition-colors">
+        <div class="flex flex-col px-4 py-6 space-y-4 text-sm font-medium dark:text-gray-200">
+            <a href="#inicio" @click="mobileMenuOpen = false" class="text-primary">Inicio</a>
+            <a href="#soluciones" @click="mobileMenuOpen = false" class="hover:text-primary dark:hover:text-primary transition-colors">Soluciones</a>
+            <a href="#productos" @click="mobileMenuOpen = false" class="hover:text-primary dark:hover:text-primary transition-colors">Productos</a>
+            <a href="#servicios" @click="mobileMenuOpen = false" class="hover:text-primary dark:hover:text-primary transition-colors">Servicios</a>
+            <a href="#obras-testimonios" @click="mobileMenuOpen = false" class="hover:text-primary dark:hover:text-primary transition-colors">Obras y Testimonios</a>
+            <a href="#nosotros" @click="mobileMenuOpen = false" class="hover:text-primary dark:hover:text-primary transition-colors">Nosotros</a>
+            <a href="#faq" @click="mobileMenuOpen = false" class="hover:text-primary dark:hover:text-primary transition-colors">FAQ</a>
+            
+            <a href="#contacto" @click="mobileMenuOpen = false" class="bg-primary text-white text-center px-5 py-3 rounded-lg mt-4 shadow-sm hover:bg-primaryHover transition-colors">
+                Solicitar cotización
+            </a>
+        </div>
+    </div>
+</nav>

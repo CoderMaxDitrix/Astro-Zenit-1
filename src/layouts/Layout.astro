@@ -1,0 +1,54 @@
+---
+// Importamos el archivo CSS de Tailwind que Astro generó automáticamente
+import '../styles/global.css';
+---
+
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth" 
+      x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }" 
+      x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))" 
+      :class="{ 'dark': darkMode }">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zenit Solar | Energía renovable</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- dimitri -->
+    <link rel="alternate icon" type="image/x-icon" href="/favicon.ico" />
+
+</head>
+<body class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white transition-colors duration-300">
+    
+    <slot />
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" is:inline></script>
+    <script src="https://unpkg.com/lucide@latest" is:inline></script>
+    <script src="https://unpkg.com/alpinejs" defer is:inline></script>
+
+    <script is:inline>
+        // Inicializar iconos de Lucide
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+            
+            // Inicializar animaciones de AOS
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    once: false,
+                    mirror: true,
+                    offset: 0,
+                    duration: 700,
+                    easing: 'ease-out-cubic'
+                });
+            }
+        });
+    </script>
+</body>
+</html>

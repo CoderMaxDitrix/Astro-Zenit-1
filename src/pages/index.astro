@@ -1,17 +1,20 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero   from '../components/Hero.astro';
+import Soluciones from '../components/Soluciones.astro';
+import Equipos    from '../components/Equipos.astro';
+import Servicios  from '../components/Servicios.astro';
+import Proyectos   from '../components/Proyecto.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Zenit Solar | Energía Limpia para tu Futuro">
+    <Navbar />
+    <main>
+        <Hero />
+        <Soluciones />
+        <Equipos /> 
+        <Servicios />
+        <Proyectos />
+    </main>
+</Layout>
